@@ -116,7 +116,7 @@ def evaluate(results):
     pl.legend()
     
     # Aesthetics
-    pl.suptitle("Performance Metrics for Three Supervised Learning Models", fontsize = 16, y = 1.10)
+    pl.suptitle("Performance Metrics for Five Supervised Learning Models", fontsize = 16, y = 1.10)
     pl.tight_layout()
     pl.show()
     
