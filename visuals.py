@@ -56,15 +56,14 @@ def evaluate(results):
       - learners: a list of supervised learners
       - stats: a list of dictionaries of the statistic results from 'train_predict()'
       - accuracy: The score for the naive predictor
-      - f1: The score for the naive predictor
     """
   
     # Create figure
-    fig, ax = pl.subplots(2, 2, figsize = (11,7))
+    fig, ax = pl.subplots(2, 3, figsize = (11,7))
 
     # Constants
-    bar_width = 0.3
-    colors = ['#A00000','#00A0A0','#00A000']
+    bar_width = 0.1
+    colors = ['#A00000','#00A0A0','#00A000','#A09800','#2300A0']
     
     # Super loop to plot four panels of data
     for k, learner in enumerate(results.keys()):
@@ -72,12 +71,11 @@ def evaluate(results):
             for i in np.arange(3):
                 
                 # Creative plot code
-                print("atest")
-                ax[j//3, j%3].bar(i+k*bar_width, results[learner][i][metric], width = bar_width, color = colors[k])
-                ax[j//3, j%3].set_xticks([0.45, 1.45, 2.45])
-                ax[j//3, j%3].set_xticklabels(["1%", "10%", "100%"])
-                ax[j//3, j%3].set_xlabel("Training Set Size")
-                ax[j//3, j%3].set_xlim((-0.1, 3.0))
+                ax[j//2, j%2].bar(i+k*bar_width, results[learner][i][metric], width = bar_width, color = colors[k])
+                ax[j//2, j%2].set_xticks([0.45, 1.45, 2.45])
+                ax[j//2, j%2].set_xticklabels(["1%", "10%", "100%"])
+                ax[j//2, j%2].set_xlabel("Training Set Size")
+                ax[j//2, j%2].set_xlim((-0.1, 3.0))
     
     # Add unique y-labels
     ax[0, 0].set_ylabel("Time (in seconds)")
